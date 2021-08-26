@@ -1,0 +1,20 @@
+{
+  "name": "out-rider-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTUC-STRIKERS/out-rider-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LTUC-STRIKERS/out-rider-backend/issues"
+  },
+  "homepage": "https://github.com/LTUC-STRIKERS/out-rider-backend#readme"
+}
