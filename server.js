@@ -25,25 +25,25 @@ const getSearch = (req, res) => {
     // from https://www.yelp.com/developers/v3/manage_app
     const apiKey = `${process.env.YELP_API_KEY}`;
     const searchRequest = {
-        term: req.query.term,
+        term: 'restaurants',
         location: req.query.location
     };
+    console.log(searchRequest)
     const client = yelp.client(apiKey);
     client.search(searchRequest).then(response => {
-        const firstResult = response.jsonBody.businesses;
-        const prettyJson = JSON.stringify(firstResult, null, 4);
-        console.log(prettyJson);
-        res.send(prettyJson);
+        const results = response.jsonBody.businesses;
+        let array = [];
+        results.map(restaurant => {
+            array.push(new Restaurant(restaurant))
+        })
+        console.log(array);
+        res.send(array);
     }).catch(e => {
-        console.log(e);
         res.send(e);
     });
-
 }
 
-
 server.get('/search', getSearch);
-
 class Restaurant {
     constructor(restaurant) {
         this.name = restaurant.name;
@@ -51,6 +51,9 @@ class Restaurant {
         this.price = restaurant.price;
         this.rating = restaurant.rating;
         this.url = restaurant.url;
+        this.coordinates = restaurant.coordinates;
+        this.phone = restaurant.phone;
+        this.review_count = restaurant.review_count;
 
     }
 }
