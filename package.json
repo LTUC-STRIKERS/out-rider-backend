@@ -1,9 +1,10 @@
 {
   "name": "out-rider-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "add staging branch",
   "main": "app.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
