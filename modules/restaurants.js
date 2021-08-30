@@ -52,6 +52,7 @@ class Restaurant{
     this.coordinates=restaurant.coordinates;
     this.phone = restaurant.phone;
     this.review_count = restaurant.review_count;
+    this.id=restaurant.id;
     
   }
 }
