@@ -5,11 +5,11 @@ const caching = require('./caching')
 
 const getRestaurants = (req,res)=>{
 
-    // const cityName = req.query.searchQuery;
-    // const cityNameYelp = `yelp-${cityName}`;
+    const cityName = req.query.cityName;
+    const cityNameYelp = `yelp-${cityName}`;
     const yelpURL = `https://api.yelp.com/v3/businesses/search?`;
-    if(caching['cityNameYelp']!== undefined){
-      res.send(caching['cityNameYelp']);
+    if(caching[cityNameYelp]!== undefined){
+      res.send(caching[cityNameYelp]);
     }else{
 
       axios.get(yelpURL,
@@ -19,23 +19,21 @@ const getRestaurants = (req,res)=>{
             },
             params: {
               term: 'restaurants',
-              // location:cityName,
-              // categories:'bagels',
-              latitude: 51.509865,              
-              longitude:-0.118092
+              location:cityName,
 
             },
           },
         ).then((cityYelpData) => {
+          console.log(cityYelpData.data.businesses);
         let restaurants = cityYelpData.data.businesses.map(restaurant =>{
-          // console.log(restaurant);
           let rest = new Restaurant(restaurant);
           return rest;
         })
-        caching['cityNameYelp'] = restaurants;
+        caching[cityNameYelp] = restaurants;
         res.send(restaurants);
 
     }).catch(error => {
+      console.log("errror");
         res.send(error)
     })
     }
@@ -52,6 +50,8 @@ class Restaurant{
     this.rating = restaurant.rating;
     this.url=restaurant.url;
     this.coordinates=restaurant.coordinates;
+    this.phone = restaurant.phone;
+    this.review_count = restaurant.review_count;
     
   }
 }
