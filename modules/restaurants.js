@@ -53,6 +53,8 @@ class Restaurant{
     this.phone = restaurant.phone;
     this.review_count = restaurant.review_count;
     this.id=restaurant.id;
+    this.longitude=restaurant.coordinates.longitude;
+    this.latitude=restaurant.coordinates.latitude;
     
   }
 }

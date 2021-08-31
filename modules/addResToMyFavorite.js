@@ -9,7 +9,9 @@ async function addResToMyFavorite(req, res) {
       phone: req.body.phone,
       review_count: req.body.review_count,
       url: req.body.url,
-      id: req.body.id,
+      id_res: req.body.id_res,
+      longitude:req.body.longitude,
+      latitude:req.body.latitude,
     };
     const newRestaurant = new favResturantModel({
       name: obj.name,
@@ -19,13 +21,16 @@ async function addResToMyFavorite(req, res) {
       phone: obj.phone,
       review_count: obj.review_count,
       url: obj.url,
-      id: obj.id,
+      id_res:obj.id_res,
+      longitude:obj.longitude,
+      latitude:obj.latitude,
+      
     });
   
     
-    let found= await favResturantModel.findOne({ id: obj.id }
+    let found= await favResturantModel.findOne({ id_res: obj.id_res }
        ).exec();
-       console.log('id:',obj.id)
+       console.log('id kkkk:',obj.id_res);
     if (found === null){
       await newRestaurant.save();
     }

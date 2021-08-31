@@ -6,6 +6,7 @@ const cors = require("cors");
 const getRestaurants = require("./modules/restaurants");
 const getFavoriteRestaurents = require("./modules/getFavoriteRestaurents");
 const addResToMyFavorite = require("./modules/addResToMyFavorite");
+const deleteRestaurantForOwnerEmail = require("./modules/deleteRestaurantForOwnerEmail");
 
 const app = new express();
 
@@ -16,10 +17,11 @@ const PORT = process.env.PORT;
 
 app.get("/", (req, res) => res.send("out rider"));
 app.get("/restaurants", getRestaurants);
-app.post("/addrestomyfavorite", addResToMyFavorite);
-
-//Model
 app.get("/favoriterestaurents", getFavoriteRestaurents);
+app.post("/addrestomyfavorite", addResToMyFavorite);
+app.delete('/restaurants/:restaurantID',deleteRestaurantForOwnerEmail);
+
+
 
 
 app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
