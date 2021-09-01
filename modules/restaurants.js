@@ -24,12 +24,13 @@ const getRestaurants = (req,res)=>{
             },
           },
         ).then((cityYelpData) => {
-          console.log(cityYelpData.data.businesses);
+          // console.log(cityYelpData.data.businesses);
         let restaurants = cityYelpData.data.businesses.map(restaurant =>{
           let rest = new Restaurant(restaurant);
           return rest;
         })
         caching[cityNameYelp] = restaurants;
+        console.log('longggggggg',restaurants)
         res.send(restaurants);
 
     }).catch(error => {
@@ -53,7 +54,8 @@ class Restaurant{
     this.phone = restaurant.phone;
     this.review_count = restaurant.review_count;
     this.id=restaurant.id;
-    
+    this.latitude=restaurant.coordinates.latitude;
+    this.longitude=restaurant.coordinates.longitude;  
   }
 }
 

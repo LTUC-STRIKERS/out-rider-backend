@@ -12,6 +12,8 @@ const favResturantSchema = new mongoose.Schema({
     review_count: Number,
     url: String,
     id: String,
+    latitude:Number,
+    longitude:Number,
   });
 const favResturantModel = mongoose.model("Restaurant", favResturantSchema);
 module.exports=favResturantModel;
