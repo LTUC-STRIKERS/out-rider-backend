@@ -1,5 +1,6 @@
 
-  const favResturantModel=require('./schema-model');
+const favResturantModel=require('./schema-model');
+
 async function addResToMyFavorite(req, res) {
 
     let obj = {
@@ -27,7 +28,9 @@ async function addResToMyFavorite(req, res) {
     let found= await favResturantModel.findOne({ id: obj.id }
        ).exec();
        console.log('id:',obj.id)
-    if (found ===null){
+
+    if (found === null){
+
       await newRestaurant.save();
     }
     // await newRestaurant.save();
@@ -50,4 +53,3 @@ async function addResToMyFavorite(req, res) {
 
   module.exports=addResToMyFavorite;
 
-  
