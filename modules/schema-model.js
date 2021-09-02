@@ -11,9 +11,9 @@ const favResturantSchema = new mongoose.Schema({
     phone: Number,
     review_count: Number,
     url: String,
-    id: String,
-    latitude:Number,
+    id_res: String,
     longitude:Number,
+    latitude:Number
   });
 const favResturantModel = mongoose.model("Restaurant", favResturantSchema);
 module.exports=favResturantModel;

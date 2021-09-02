@@ -11,9 +11,9 @@ async function addResToMyFavorite(req, res) {
     phone: req.body.phone,
     review_count: req.body.review_count,
     url: req.body.url,
-    id: req.body.id,
-    latitude:req.body.latitude,
+    id_res: req.body.id_res,
     longitude:req.body.longitude,
+    latitude:req.body.latitude,
   };
   const newRestaurant = new favResturantModel({
     name: obj.name,
@@ -23,10 +23,12 @@ async function addResToMyFavorite(req, res) {
     phone: obj.phone,
     review_count: obj.review_count,
     url: obj.url,
-    id: obj.id,
-    latitude:obj.latitude,
+    id_res:obj.id_res,
     longitude:obj.longitude,
+    latitude:obj.latitude,
+    
   });
+
 
   let found = await favResturantModel.findOne({ id: obj.id }).exec();
   console.log("id:", obj.id);
@@ -38,6 +40,10 @@ async function addResToMyFavorite(req, res) {
       console.log("adding data to cash", cachMemory);
     } else {
       console.log("inside first condition else fffff");
+
+   
+  
+
     }
   }
  

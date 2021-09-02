@@ -12,8 +12,10 @@ const cachMemory = require('./cashMansoor');
   let email = request.query.email;
     favResturantModel.find({ email: email }, function (err, ownerData) {
       if (err) {
+        log('fffffffff');
         console.log(err);
       } else {
+
         console.log('add all data to cash first time',cachMemory);
         cachMemory.push(ownerData);
         response.send(ownerData);
@@ -26,4 +28,8 @@ const cachMemory = require('./cashMansoor');
 
 
 
-module.exports=getFavoriteRestaurents;
+
+
+
+module.exports = getFavoriteRestaurents;
+
